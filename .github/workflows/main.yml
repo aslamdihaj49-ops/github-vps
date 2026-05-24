@@ -4,7 +4,7 @@ jobs:
   vps:
     runs-on: ubuntu-latest
     steps:
-      - name: Setup
+      - name: Setup Hermes
         run: |
           sudo apt update && sudo apt upgrade -y
           sudo apt install -y nodejs npm curl wget git
@@ -12,5 +12,7 @@ jobs:
           source ~/.bashrc
           hermes config set provider openrouter
           hermes config set model nousresearch/hermes-3-llama-3.1-405b:free
-          echo "Hermes جاهز. يعمل 6 ساعات."
+          echo -e "Y\nY" | hermes gateway install
+          hermes gateway start
+          echo "Hermes Agent يعمل الآن!"
           sleep 6h
