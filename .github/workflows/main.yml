@@ -12,6 +12,5 @@ jobs:
           source ~/.bashrc
           hermes config set provider openrouter
           hermes config set model nousresearch/hermes-3-llama-3.1-405b:free
-          echo Y | hermes gateway install
-          hermes gateway start
+          echo "Hermes جاهز. يعمل 6 ساعات."
           sleep 6h
