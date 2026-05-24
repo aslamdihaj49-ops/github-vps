@@ -1,0 +1,17 @@
+name: VPS
+on: [workflow_dispatch]
+jobs:
+  vps:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup
+        run: |
+          sudo apt update && sudo apt upgrade -y
+          sudo apt install -y nodejs npm curl wget git openssh-server
+          sudo service ssh start
+          curl -fsSL https://raw.githubusercontent.com/NousResearch/hermes-agent/main/scripts/install.sh | bash
+          source ~/.bashrc
+          hermes config set provider openrouter
+          hermes config set model nousresearch/hermes-3-llama-3.1-405b:free
+          hermes agent start
+          sleep 6h
